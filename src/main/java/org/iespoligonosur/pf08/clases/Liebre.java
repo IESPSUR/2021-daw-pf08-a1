@@ -1,5 +1,7 @@
 package org.iespoligonosur.pf08.clases;
 
+import java.util.Random;
+
 /**
  * Clase para definir el tipo de jugador Liebre.
  * @author Grupo A1.
