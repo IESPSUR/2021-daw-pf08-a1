@@ -9,18 +9,18 @@ import java.util.Scanner;
  * @author Grupo A1.
  *
  */
-public class Liebre {
+public class Liebre extends JugadorBasico {
 
-	protected int dadoLiebre;
-	protected static int pasosLiebre;
-	protected static int resultadoDado;
+	int dadoLiebre;
+	static int pasosLiebre;
+	static int resultadoDado;
 	static Scanner teclado;
 
 	/**
 	 * Constructor de la clase Liebre.
 	 */
 	public Liebre() {
-
+		// TODO Auto-generated constructor stub
 	}
 
 	/**
@@ -61,6 +61,40 @@ public class Liebre {
 		}
 
 		return pasosLiebre;
+	}
+
+	@Override
+	public String getNombre() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public TipoJugador getTipo() {
+		return TipoJugador.LIEBRE;
+	}
+
+	@Override
+	public int getVelocidadUltimoTurno() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getVelocidadAlcanzadaMaxima() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void resetea() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void avanza() {
+		PasosLiebre();
 	}
 
 }
