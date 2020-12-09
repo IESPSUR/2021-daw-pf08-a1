@@ -10,9 +10,7 @@ import java.util.Random;
  */
 public class CorreCaminos extends JugadorBasico {
 
-	protected static int dadoCorreCaminos;
-	protected static int pasosCorreCaminos;
-	protected static int resultadoDado;
+	protected static int dadoCorreCaminos, VelocidadMaximaCorreCaminos = 0, PasosCorreCaminos, resultadoDado;
 
 	/**
 	 * Constructor de la clase CorreCaminos.
@@ -29,9 +27,9 @@ public class CorreCaminos extends JugadorBasico {
 	 */
 	public static int DadoBase(int numeroCaras) {
 		Random ran = new Random();
-		resultadoDado = ran.nextInt(numeroCaras) + 1;
+		dadoCorreCaminos = ran.nextInt(numeroCaras) + 1;
 
-		return resultadoDado;
+		return dadoCorreCaminos;
 	}
 
 	/**
@@ -42,12 +40,10 @@ public class CorreCaminos extends JugadorBasico {
 	 */
 	public static int PasosCorrecaminos() {
 
-		dadoCorreCaminos = DadoBase(10);
+		PasosCorreCaminos = DadoBase(10);
 
-		pasosCorreCaminos = dadoCorreCaminos;
-
-		if (dadoCorreCaminos % 2 == 0) {
-			return pasosCorreCaminos;
+		if (PasosCorreCaminos % 2 == 0) {
+			return PasosCorreCaminos;
 		} else {
 			return 0;
 		}
@@ -72,8 +68,12 @@ public class CorreCaminos extends JugadorBasico {
 
 	@Override
 	public int getVelocidadAlcanzadaMaxima() {
-		// TODO Auto-generated method stub
-		return 0;
+
+		if (PasosCorreCaminos > VelocidadMaximaCorreCaminos) {
+			VelocidadMaximaCorreCaminos = PasosCorreCaminos;
+		}
+
+		return VelocidadMaximaCorreCaminos;
 	}
 
 	@Override
