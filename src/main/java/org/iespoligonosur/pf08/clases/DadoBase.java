@@ -1,7 +1,5 @@
 package org.iespoligonosur.pf08.clases;
 
-import java.util.Random;
-
 /**
  * Definicion de una clase base para la implementacion de dados de N caras
  * @author eserrano
@@ -9,13 +7,10 @@ import java.util.Random;
  */
 public abstract class DadoBase implements IDado{
 
-	private int numeroCaras, resultadoDado;
+	private int numeroCaras;
 	
 	public DadoBase(int numeroCaras) {
-		Random ran = new Random();
-		resultadoDado = ran.nextInt(numeroCaras)+1;
-		
-		return resultadoDado;
+		// TODO Auto-generated constructor stub
 	}
 
 }

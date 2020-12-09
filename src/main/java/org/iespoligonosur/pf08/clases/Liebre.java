@@ -1,6 +1,7 @@
 package org.iespoligonosur.pf08.clases;
 
 import org.iespoligonosur.pf08.clases.DadoBase;
+import java.util.Random;
 
 /**
  * Clase para definir el tipo de jugador Liebre.
@@ -9,7 +10,7 @@ import org.iespoligonosur.pf08.clases.DadoBase;
  */
 public class Liebre {
 	
-	protected int dadoLiebre, pasosLiebre;
+	protected int dadoLiebre, pasosLiebre, resultadoDado;
 	
 	/**
 	 * Constructor de la clase Liebre.
@@ -19,14 +20,15 @@ public class Liebre {
 	}
 	
 	/**
-	 * Método para obtener el valor del dado lanzado por el jugador Liebre.
-	 * @return devuelve el resultado de lanzar un dado de 6 caras.
+	 * Método para lanzar un dado.
+	 * @param numeroCaras número de caras que tiene el dado.
+	 * @return devuelve el número resultado de lanzar el dado.
 	 */
-	public DadoBase DadoLiebre() {
+	public int DadoBase(int numeroCaras) {
+		Random ran = new Random();
+		resultadoDado = ran.nextInt(numeroCaras)+1;
 		
-		DadoBase dadoLiebre = new DadoBase(6);
-		
-		return dadoLiebre;
+		return resultadoDado;
 	}
 	
 	/**
@@ -34,6 +36,8 @@ public class Liebre {
 	 * @return devuelve el número de pasos que avanza la Liebre en un turno.
 	 */
 	public int PasosLiebre() {
+		
+		int dadoLiebre = DadoBase(6);
 		
 		if (dadoLiebre == 3) {
 			pasosLiebre = 3;
