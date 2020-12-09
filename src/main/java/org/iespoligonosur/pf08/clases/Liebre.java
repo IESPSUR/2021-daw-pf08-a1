@@ -11,14 +11,14 @@ import java.util.Scanner;
  */
 public class Liebre extends JugadorBasico {
 
-	static int dadoLiebre, PasosLiebre, VelocidadMaximaLiebre = 0, resultadoDado;
+	static int dadoLiebre, PasosLiebre, VelocidadMaximaLiebre = 0, resultadoDado, RecorridoLiebre = 0;
 	static Scanner teclado;
 
 	/**
 	 * Constructor de la clase Liebre.
 	 */
-	public Liebre() {
-		// TODO Auto-generated constructor stub
+	public Liebre(String nombre) {
+		this.nombre = nombre;
 	}
 
 	/**
@@ -63,8 +63,7 @@ public class Liebre extends JugadorBasico {
 
 	@Override
 	public String getNombre() {
-		// TODO Auto-generated method stub
-		return null;
+		return nombre;
 	}
 
 	@Override
@@ -89,13 +88,14 @@ public class Liebre extends JugadorBasico {
 
 	@Override
 	public void resetea() {
-		// TODO Auto-generated method stub
-		
+		RecorridoLiebre = 0;
+		VelocidadMaximaLiebre = 0;
+		PasosLiebre = 0;	
 	}
 
 	@Override
 	public void avanza() {
-		PasosLiebre();
+		RecorridoLiebre = RecorridoLiebre + PasosLiebre();
 	}
 
 }

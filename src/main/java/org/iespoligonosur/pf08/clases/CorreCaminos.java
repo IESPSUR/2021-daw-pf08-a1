@@ -10,13 +10,13 @@ import java.util.Random;
  */
 public class CorreCaminos extends JugadorBasico {
 
-	protected static int dadoCorreCaminos, VelocidadMaximaCorreCaminos = 0, PasosCorreCaminos, resultadoDado;
+	protected static int dadoCorreCaminos, VelocidadMaximaCorreCaminos = 0, PasosCorreCaminos, resultadoDado, RecorridoCorreCaminos = 0;
 
 	/**
 	 * Constructor de la clase CorreCaminos.
 	 */
-	public CorreCaminos() {
-
+	public CorreCaminos(String nombre) {
+		this.nombre = nombre;
 	}
 
 	/**
@@ -51,8 +51,7 @@ public class CorreCaminos extends JugadorBasico {
 
 	@Override
 	public String getNombre() {
-		// TODO Auto-generated method stub
-		return null;
+		return nombre;
 	}
 
 	@Override
@@ -62,8 +61,7 @@ public class CorreCaminos extends JugadorBasico {
 
 	@Override
 	public int getVelocidadUltimoTurno() {
-		// TODO Auto-generated method stub
-		return 0;
+		return PasosCorreCaminos;
 	}
 
 	@Override
@@ -78,13 +76,14 @@ public class CorreCaminos extends JugadorBasico {
 
 	@Override
 	public void resetea() {
-		// TODO Auto-generated method stub
-		
+		RecorridoCorreCaminos = 0;
+		VelocidadMaximaCorreCaminos = 0;
+		PasosCorreCaminos = 0;			
 	}
 
 	@Override
 	public void avanza() {
-		PasosCorrecaminos();
+		RecorridoCorreCaminos = RecorridoCorreCaminos + PasosCorrecaminos();
 	}
 
 }
