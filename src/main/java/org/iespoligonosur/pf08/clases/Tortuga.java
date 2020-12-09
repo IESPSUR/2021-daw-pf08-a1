@@ -55,27 +55,7 @@ public class Tortuga extends JugadorBasico {
 
 	@Override
 	public int getVelocidadUltimoTurno() {
-
-		/**
-		 * En caso de que ultimo turno se refiera a el ultimo turno del juego, creamos
-		 * un array con todos los turnos y cogeremos el último.
-		 * 
-		 * int [] TurnosTortuga; int UltimoTurnoTortuga;
-		 * 
-		 * TurnosTortuga = PasosTortuga;
-		 * 
-		 * UltimoTurnoTortuga = TurnosTortuga.get(TurnosTortuga.size() -1 );
-		 * 
-		 * return UltimoTurnoTortuga;
-		 **/
-
-		/**
-		 * En caso de que ultimo turno se refiera a el ultimo turno tirado.
-		 * 
-		 * return PasosTortuga;
-		 **/
-
-		return 0;
+		return PasosTortuga;
 	}
 
 	@Override
