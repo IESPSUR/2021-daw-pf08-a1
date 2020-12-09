@@ -63,8 +63,4 @@ public class Liebre {
 		return pasosLiebre;
 	}
 
-	public static void main(String[] args) {
-		System.out.println(PasosLiebre());
-	}
-
 }
