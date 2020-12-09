@@ -10,7 +10,9 @@ import java.util.Random;
  */
 public class CorreCaminos {
 
-	protected int dadoCorreCaminos, pasosCorreCaminos, resultadoDado;
+	protected static int dadoCorreCaminos;
+	protected static int pasosCorreCaminos;
+	protected static int resultadoDado;
 
 	/**
 	 * Constructor de la clase CorreCaminos.
@@ -25,7 +27,7 @@ public class CorreCaminos {
 	 * @param numeroCaras número de caras que tiene el dado.
 	 * @return devuelve el número resultado de lanzar el dado.
 	 */
-	public int DadoBase(int numeroCaras) {
+	public static int DadoBase(int numeroCaras) {
 		Random ran = new Random();
 		resultadoDado = ran.nextInt(numeroCaras) + 1;
 
@@ -38,7 +40,7 @@ public class CorreCaminos {
 	 * 
 	 * @return devuelve el número de pasos que avanza el CorreCaminos en un turno.
 	 */
-	public int PasosCorrecaminos() {
+	public static int PasosCorrecaminos() {
 
 		dadoCorreCaminos = DadoBase(10);
 

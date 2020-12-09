@@ -10,7 +10,8 @@ import java.util.Random;
  */
 public class Tortuga {
 
-	int dadoTortuga, resultadoDado;
+	static int dadoTortuga;
+	static int resultadoDado;
 
 	/**
 	 * Constructor de la clase Tortuga.
@@ -25,11 +26,11 @@ public class Tortuga {
 	 * @param numeroCaras número de caras que tiene el dado.
 	 * @return devuelve el número resultado de lanzar el dado.
 	 */
-	public int DadoBase(int numeroCaras) {
+	public static int DadoBase(int numeroCaras) {
 		Random ran = new Random();
-		resultadoDado = ran.nextInt(numeroCaras) + 1;
+		dadoTortuga = ran.nextInt(numeroCaras) + 1;
 
-		return resultadoDado;
+		return dadoTortuga;
 	}
 
 	/**
@@ -37,10 +38,11 @@ public class Tortuga {
 	 * 
 	 * @return devuelve el número de pasos que avanza la tortuga en un turno.
 	 */
-	public int PasosTortuga() {
+	public static int PasosTortuga() {
 		dadoTortuga = DadoBase(3);
 
 		return dadoTortuga;
 	}
+
 
 }
