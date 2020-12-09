@@ -8,7 +8,7 @@ package org.iespoligonosur.pf08.clases;
  */
 public abstract class JugadorBasico implements IJugador {
 
-	private String nombre;
+	protected String nombre;
 	private int velocidadPunta;
 	private int ultimaTirada;
 	private int recorrido;

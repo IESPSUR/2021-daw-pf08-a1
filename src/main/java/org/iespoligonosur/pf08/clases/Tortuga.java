@@ -10,13 +10,13 @@ import java.util.Random;
  */
 public class Tortuga extends JugadorBasico {
 
-	static int dadoTortuga, PasosTortuga, resultadoDado, PasosTortugaTotal = 0, VelocidadMaximaTortuga = 0;
+	static int dadoTortuga, PasosTortuga, resultadoDado, RecorridoTortuga = 0, VelocidadMaximaTortuga = 0;
 
 	/**
 	 * Constructor de la clase Tortuga.
 	 */
-	public Tortuga() {
-
+	public Tortuga(String nombre) {
+		this.nombre = nombre;
 	}
 
 	/**
@@ -45,8 +45,7 @@ public class Tortuga extends JugadorBasico {
 
 	@Override
 	public String getNombre() {
-		// TODO Auto-generated method stub
-		return null;
+		return nombre;
 	}
 
 	@Override
@@ -56,7 +55,27 @@ public class Tortuga extends JugadorBasico {
 
 	@Override
 	public int getVelocidadUltimoTurno() {
-		return PasosTortuga;
+
+		/**
+		 * En caso de que ultimo turno se refiera a el ultimo turno del juego, creamos
+		 * un array con todos los turnos y cogeremos el último.
+		 * 
+		 * int [] TurnosTortuga; int UltimoTurnoTortuga;
+		 * 
+		 * TurnosTortuga = PasosTortuga;
+		 * 
+		 * UltimoTurnoTortuga = TurnosTortuga.get(TurnosTortuga.size() -1 );
+		 * 
+		 * return UltimoTurnoTortuga;
+		 **/
+
+		/**
+		 * En caso de que ultimo turno se refiera a el ultimo turno tirado.
+		 * 
+		 * return PasosTortuga;
+		 **/
+
+		return 0;
 	}
 
 	@Override
@@ -71,15 +90,14 @@ public class Tortuga extends JugadorBasico {
 
 	@Override
 	public void resetea() {
-		PasosTortugaTotal = 0;
+		RecorridoTortuga = 0;
 		VelocidadMaximaTortuga = 0;
 		PasosTortuga = 0;
 	}
 
 	@Override
 	public void avanza() {
-		PasosTortugaTotal = PasosTortugaTotal + PasosTortuga();
-		PasosTortuga();
+		RecorridoTortuga = RecorridoTortuga + PasosTortuga();
 	}
 
 }
