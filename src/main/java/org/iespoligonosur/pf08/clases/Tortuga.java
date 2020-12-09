@@ -1,6 +1,6 @@
 package org.iespoligonosur.pf08.clases;
 
-import java.util.Random;
+import org.iespoligonosur.pf08.clases.DadoBase;
 
 /**
  * Clase para definir el tipo de jugador Tortuga.
@@ -23,9 +23,8 @@ public class Tortuga {
 	 * @return devuelve el número de pasos que avanza la tortuga en un turno.
 	 */
 	
-	public int PasosTortuga() {
-		Random ran = new Random();
-		dadoTortuga = ran.nextInt(3)+1;
+	public DadoBase PasosTortuga() {
+		DadoBase dadoTortuga = new DadoBase(3);
 		
 		return dadoTortuga;
 	}
