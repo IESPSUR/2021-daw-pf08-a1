@@ -1,6 +1,7 @@
 package org.iespoligonosur.pf08.clases;
 
 import java.util.Random;
+import java.util.Scanner;
 
 /**
  * Clase para definir el tipo de jugador Liebre.
@@ -10,7 +11,10 @@ import java.util.Random;
  */
 public class Liebre {
 
-	protected int dadoLiebre, pasosLiebre, resultadoDado;
+	protected int dadoLiebre;
+	protected static int pasosLiebre;
+	protected static int resultadoDado;
+	static Scanner teclado;
 
 	/**
 	 * Constructor de la clase Liebre.
@@ -25,7 +29,7 @@ public class Liebre {
 	 * @param numeroCaras número de caras que tiene el dado.
 	 * @return devuelve el número resultado de lanzar el dado.
 	 */
-	public int DadoBase(int numeroCaras) {
+	public static int DadoBase(int numeroCaras) {
 		Random ran = new Random();
 		resultadoDado = ran.nextInt(numeroCaras) + 1;
 
@@ -37,17 +41,30 @@ public class Liebre {
 	 * 
 	 * @return devuelve el número de pasos que avanza la Liebre en un turno.
 	 */
-	public int PasosLiebre() {
+	public static int PasosLiebre() {
 
 		int dadoLiebre = DadoBase(6);
+		teclado = new Scanner(System.in);
 
 		if (dadoLiebre == 3) {
 			pasosLiebre = 3;
 		} else {
-
+			System.out.println("Adivina si el número es mayor o menor a 3 (Mayor/Menor)");
+			String resultado = teclado.next();
+			if (resultado.equals("Mayor") && dadoLiebre > 3) {
+				pasosLiebre = dadoLiebre;
+			} else if (resultado.equals("Menor") && dadoLiebre < 3) {
+				pasosLiebre = dadoLiebre;
+			} else {
+				pasosLiebre = 0;
+			}
 		}
 
 		return pasosLiebre;
+	}
+
+	public static void main(String[] args) {
+		System.out.println(PasosLiebre());
 	}
 
 }
