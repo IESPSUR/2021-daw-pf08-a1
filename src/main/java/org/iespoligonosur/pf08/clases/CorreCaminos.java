@@ -8,7 +8,7 @@ import java.util.Random;
  * @author Grupo A1.
  *
  */
-public class CorreCaminos {
+public class CorreCaminos extends JugadorBasico {
 
 	protected static int dadoCorreCaminos;
 	protected static int pasosCorreCaminos;
@@ -51,6 +51,40 @@ public class CorreCaminos {
 		} else {
 			return 0;
 		}
+	}
+
+	@Override
+	public String getNombre() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public TipoJugador getTipo() {
+		return TipoJugador.CORRECAMINOS;
+	}
+
+	@Override
+	public int getVelocidadUltimoTurno() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getVelocidadAlcanzadaMaxima() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void resetea() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void avanza() {
+		PasosCorrecaminos();
 	}
 
 }
