@@ -10,8 +10,7 @@ import java.util.Random;
  */
 public class Tortuga extends JugadorBasico {
 
-	static int dadoTortuga;
-	static int resultadoDado;
+	static int dadoTortuga, PasosTortuga, resultadoDado, PasosTortugaTotal = 0, VelocidadMaximaTortuga = 0;
 
 	/**
 	 * Constructor de la clase Tortuga.
@@ -39,9 +38,9 @@ public class Tortuga extends JugadorBasico {
 	 * @return devuelve el número de pasos que avanza la tortuga en un turno.
 	 */
 	public static int PasosTortuga() {
-		dadoTortuga = DadoBase(3);
+		PasosTortuga = DadoBase(3);
 
-		return dadoTortuga;
+		return PasosTortuga;
 	}
 
 	@Override
@@ -57,26 +56,30 @@ public class Tortuga extends JugadorBasico {
 
 	@Override
 	public int getVelocidadUltimoTurno() {
-		// TODO Auto-generated method stub
-		return 0;
+		return PasosTortuga;
 	}
 
 	@Override
 	public int getVelocidadAlcanzadaMaxima() {
-		// TODO Auto-generated method stub
-		return 0;
+
+		if (PasosTortuga > VelocidadMaximaTortuga) {
+			VelocidadMaximaTortuga = PasosTortuga;
+		}
+
+		return VelocidadMaximaTortuga;
 	}
 
 	@Override
 	public void resetea() {
-		// TODO Auto-generated method stub
-		
+		PasosTortugaTotal = 0;
+		VelocidadMaximaTortuga = 0;
+		PasosTortuga = 0;
 	}
 
 	@Override
 	public void avanza() {
+		PasosTortugaTotal = PasosTortugaTotal + PasosTortuga();
 		PasosTortuga();
 	}
-
 
 }

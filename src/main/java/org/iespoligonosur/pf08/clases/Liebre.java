@@ -11,9 +11,7 @@ import java.util.Scanner;
  */
 public class Liebre extends JugadorBasico {
 
-	int dadoLiebre;
-	static int pasosLiebre;
-	static int resultadoDado;
+	static int dadoLiebre, PasosLiebre, VelocidadMaximaLiebre = 0, resultadoDado;
 	static Scanner teclado;
 
 	/**
@@ -47,20 +45,20 @@ public class Liebre extends JugadorBasico {
 		teclado = new Scanner(System.in);
 
 		if (dadoLiebre == 3) {
-			pasosLiebre = 3;
+			PasosLiebre = 3;
 		} else {
 			System.out.println("Adivina si el número es mayor o menor a 3 (Mayor/Menor)");
 			String resultado = teclado.next();
 			if (resultado.equals("Mayor") && dadoLiebre > 3) {
-				pasosLiebre = dadoLiebre;
+				PasosLiebre = dadoLiebre;
 			} else if (resultado.equals("Menor") && dadoLiebre < 3) {
-				pasosLiebre = dadoLiebre;
+				PasosLiebre = dadoLiebre;
 			} else {
-				pasosLiebre = 0;
+				PasosLiebre = 0;
 			}
 		}
 
-		return pasosLiebre;
+		return PasosLiebre;
 	}
 
 	@Override
@@ -76,14 +74,17 @@ public class Liebre extends JugadorBasico {
 
 	@Override
 	public int getVelocidadUltimoTurno() {
-		// TODO Auto-generated method stub
-		return 0;
+		return PasosLiebre;
 	}
 
 	@Override
 	public int getVelocidadAlcanzadaMaxima() {
-		// TODO Auto-generated method stub
-		return 0;
+
+		if (PasosLiebre > VelocidadMaximaLiebre) {
+			VelocidadMaximaLiebre = PasosLiebre;
+		}
+
+		return VelocidadMaximaLiebre;
 	}
 
 	@Override
