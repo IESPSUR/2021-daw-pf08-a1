@@ -22,10 +22,10 @@ public class Liebre extends JugadorBasico {
 	}
 
 	/**
-	 * MÃ©todo para lanzar un dado.
+	 * Método para lanzar un dado.
 	 * 
-	 * @param numeroCaras nÃºmero de caras que tiene el dado.
-	 * @return devuelve el nÃºmero resultado de lanzar el dado.
+	 * @param numeroCaras número de caras que tiene el dado.
+	 * @return devuelve el número resultado de lanzar el dado.
 	 */
 	public static int DadoBase(int numeroCaras) {
 		Random ran = new Random();
@@ -35,9 +35,9 @@ public class Liebre extends JugadorBasico {
 	}
 
 	/**
-	 * MÃ©todo para calcular el nÃºmero de pasos que da la Liebre en un turno.
+	 * Método para calcular el número de pasos que da la Liebre en un turno.
 	 * 
-	 * @return devuelve el nÃºmero de pasos que avanza la Liebre en un turno.
+	 * @return devuelve el número de pasos que avanza la Liebre en un turno.
 	 */
 	public static int PasosLiebre() {
 
@@ -47,7 +47,7 @@ public class Liebre extends JugadorBasico {
 		if (dadoLiebre == 3) {
 			PasosLiebre = 3;
 		} else {
-			System.out.println("Adivina si el nÃºmero es mayor o menor a 3 (Mayor/Menor)");
+			System.out.println("Adivina si el número es mayor o menor a 3 (Mayor/Menor)");
 			String resultado = teclado.next();
 			if (resultado.equals("Mayor") && dadoLiebre > 3) {
 				PasosLiebre = dadoLiebre;
@@ -96,6 +96,11 @@ public class Liebre extends JugadorBasico {
 	@Override
 	public void avanza() {
 		RecorridoLiebre = RecorridoLiebre + PasosLiebre();
+	}
+
+	@Override
+	public int getPasosTotales() {
+		return RecorridoLiebre;
 	}
 
 }

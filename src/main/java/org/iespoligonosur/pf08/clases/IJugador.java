@@ -9,7 +9,7 @@ public interface IJugador {
 	public String getNombre();
 	
 	/**
-	 * Devuelve la tipologÃ­a del Jugador
+	 * Devuelve la tipología del Jugador
 	 * @return
 	 */
 	public TipoJugador getTipo();
@@ -21,11 +21,18 @@ public interface IJugador {
 	public int getVelocidadUltimoTurno();
 	
 	/**
-	 * Almacena la velocidad mÃ¡xima que ha alcanzado el jugador durante algÃºn
+	 * Almacena la velocidad máxima que ha alcanzado el jugador durante algún
 	 * avance
 	 * @return velocidad maxima alcanzada
 	 */
 	public int getVelocidadAlcanzadaMaxima();
+	
+	/**
+	 * Almacena la cantidad de pasos que ha alcanzado el jugador durante todo
+	 * el juego
+	 * @return pasos totales del jugador
+	 */
+	public int getPasosTotales();
 	
 	/**
 	 * Resetea todos los valores internos del objeto para
@@ -34,7 +41,7 @@ public interface IJugador {
 	public void resetea();
 	
 	/**
-	 * Este mÃ©todo lanza el dado del jugador que se comportara segun su tipo.
+	 * Este método lanza el dado del jugador que se comportara segun su tipo.
 	 * El avance modifica el estado interno del objeto
 	 */
 	public void avanza();
