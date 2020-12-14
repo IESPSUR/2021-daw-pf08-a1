@@ -19,9 +19,4 @@ public abstract class JugadorBasico implements IJugador {
 		// TODO Auto-generated constructor stub
 	}
 
-	public void avanza() {
-		// TODO Auto-generated method stub
-		
-	}
-
 }

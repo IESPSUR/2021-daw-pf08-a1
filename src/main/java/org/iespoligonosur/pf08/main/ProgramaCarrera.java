@@ -1,57 +1,24 @@
 package org.iespoligonosur.pf08.main;
 
-import java.awt.event.ActionEvent;
-import javax.swing.JOptionPane;
-import java.awt.event.ActionListener;
-import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
-<<<<<<< HEAD
 import java.time.format.DateTimeFormatter;
-import java.util.Arrays;
-import java.util.Date;
 import java.util.InputMismatchException;
 import java.util.Scanner;
-
-import javax.swing.JOptionPane;
-=======
-import java.util.Arrays;
-import java.util.InputMismatchException;
-import java.util.Scanner;
->>>>>>> ecef5bfdf75ea0ab8baab4610063fa5c6847f55c
 
 import org.iespoligonosur.pf08.clases.CorreCaminos;
 import org.iespoligonosur.pf08.clases.IJugador;
-<<<<<<< HEAD
-import org.iespoligonosur.pf08.clases.JugadorBasico;
-import org.iespoligonosur.pf08.clases.Liebre;
-import org.iespoligonosur.pf08.clases.DadoBase;
-import org.iespoligonosur.pf08.clases.CorreCaminos;
-import org.iespoligonosur.pf08.clases.TipoJugador;
-import org.iespoligonosur.pf08.clases.Tortuga;
-import org.iespoligonosur.pf08.clases.IDado;
-
-public class ProgramaCarrera {
-
-	
-=======
 import org.iespoligonosur.pf08.clases.Liebre;
 import org.iespoligonosur.pf08.clases.Tortuga;
 
 public class ProgramaCarrera {
 
->>>>>>> ecef5bfdf75ea0ab8baab4610063fa5c6847f55c
 	// Array con los jugadores
-	private static IJugador[] jugadores = new IJugador[6];
-	private int longitudPistaCarreras = 100;
+	private static IJugador[] jugadores = new IJugador[2];
+	private static int longitudPistaCarreras = 100;
 	private int turno;
 	private static LocalDateTime inicioPartida;
-	private LocalDateTime finalPartida;
-<<<<<<< HEAD
-	
-	
-=======
+	private static LocalDateTime finalPartida;
 
->>>>>>> ecef5bfdf75ea0ab8baab4610063fa5c6847f55c
 	public ProgramaCarrera() {
 		// TODO Auto-generated constructor stub
 	}
@@ -65,60 +32,39 @@ public class ProgramaCarrera {
 	 */
 	public static void main(String[] args) {
 		creaJugadores();
-<<<<<<< HEAD
 		iniciaPartida();
-		System.out.println(Arrays.toString(jugadores));
-		imprimeEstadisticaCarrera();
-		ejecutaTurno();
-		
-		int resNumCarrera;
-		String nombre = "";
-		int velocidadPunta = 0;
-		int ultimaTirada = 0;
-		int recorrido = 0;
-		
-			
-			
-		
-=======
-		System.out.println(Arrays.toString(jugadores));
->>>>>>> ecef5bfdf75ea0ab8baab4610063fa5c6847f55c
-		// Para ver que los jugadores se han creado, no aparece completo porque no esta creado el to string
+		// System.out.println(Arrays.toString(jugadores));
+		// Para ver que los jugadores se han creado, no aparece completo porque no esta
+		// creado el to string
+
+		// Ejecutamos un turno.
+		// ejecutaTurno();
+
+		// Pintamos la carrera.
+		// pintaCarrera();
 	}
 
 	/**
 	 * Este metodo se encarga de crear uno a uno hasta 6 jugadores con la ayuda del
-<<<<<<< HEAD
 	 * usuario que introduce los datos a través de la consola.
-=======
-	 * usuario que introduce los datos a travÃ©s de la consola.
->>>>>>> ecef5bfdf75ea0ab8baab4610063fa5c6847f55c
 	 */
 	private static void creaJugadores() {
 		int opcionElegida;
 		try {
 			Scanner teclado = new Scanner(System.in);
-			
-			for (int i = 0; i < 6; i++) {
+
+			for (int i = 0; i < 2; i++) {
 				System.out.println("\nSeleccione el tipo de jugador a crear: ");
 				System.out.println("1. Tortuga");
 				System.out.println("2. Liebre");
 				System.out.println("3. Correcaminos");
-<<<<<<< HEAD
-	
-=======
->>>>>>> ecef5bfdf75ea0ab8baab4610063fa5c6847f55c
 
 				opcionElegida = teclado.nextInt();
 				teclado.nextLine();
 				switch (opcionElegida) {
 				case 1: {
-<<<<<<< HEAD
 					System.out.println("�Qu� nombre le quieres poner a la Tortuga?");
-=======
-					System.out.println("¿Qué nombre le quieres poner a la Tortuga?");
->>>>>>> ecef5bfdf75ea0ab8baab4610063fa5c6847f55c
-					
+
 					String nombre = teclado.nextLine();
 					Tortuga t = new Tortuga(nombre);
 					jugadores[i] = t;
@@ -126,11 +72,7 @@ public class ProgramaCarrera {
 				}
 
 				case 2: {
-<<<<<<< HEAD
 					System.out.println("�Qu� nombre le quieres poner a la Liebre?");
-=======
-					System.out.println("¿Qué nombre le quieres poner a la Liebre?");
->>>>>>> ecef5bfdf75ea0ab8baab4610063fa5c6847f55c
 					String nombre = teclado.nextLine();
 					Liebre l = new Liebre(nombre);
 					jugadores[i] = l;
@@ -138,98 +80,68 @@ public class ProgramaCarrera {
 				}
 
 				case 3: {
-<<<<<<< HEAD
 					System.out.println("�Qu� nombre le quieres poner al Correcaminos?");
-=======
-					System.out.println("¿Qué nombre le quieres poner al Correcaminos?");
->>>>>>> ecef5bfdf75ea0ab8baab4610063fa5c6847f55c
 					String nombre = teclado.nextLine();
 					CorreCaminos c = new CorreCaminos(nombre);
 					jugadores[i] = c;
 					break;
 				}
-<<<<<<< HEAD
-				
 				default:
 					throw new IllegalArgumentException("Opci�n inv�lida: " + opcionElegida);
 				}
-				System.out.println("Creado jugador");
-=======
-				default:
-					throw new IllegalArgumentException("Opción inválida: " + opcionElegida);
-				}
 
->>>>>>> ecef5bfdf75ea0ab8baab4610063fa5c6847f55c
 			}
 			teclado.close();
 		} catch (InputMismatchException e) {
 			throw new IllegalArgumentException("Valor inesperado");
-<<<<<<< HEAD
-			
-		
-		}
-		System.out.println("La carrera va a comenzar");
-	}
-
-	
-=======
 		}
 	}
 
->>>>>>> ecef5bfdf75ea0ab8baab4610063fa5c6847f55c
 	/**
 	 * Este metodo inicia la partida con los jugadores ya previamente creados por el
 	 * usuario La partida termina cuando cualquiera de los jugadores recorre toda la
 	 * longitud determinada para la pista alcanzando la meta.
 	 */
-<<<<<<< HEAD
 	private static void iniciaPartida() {
 		inicioPartida = LocalDateTime.now();
+		int RecorridoGlobal = 0;
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
 		String formatDateTime = inicioPartida.format(formatter);
-		
-		System.out.println("|| LA CARRERA HA COMENZADO ||" + formatDateTime + " ||");
-		
-		for (int i = 0; i < 2; i++) {
-			
-			
+
+		System.out.println("|| LA CARRERA A COMENZADO || " + formatDateTime + " ||");
+
+		while (RecorridoGlobal < longitudPistaCarreras) {
+			for (int i = 0; i < 2; i++) {
+				ejecutaTurno(i);
+				if (jugadores[i].getPasosTotales() > RecorridoGlobal) {
+					RecorridoGlobal = jugadores[i].getPasosTotales();
+				}
+				System.out.println(jugadores[i].getNombre() + " - " + jugadores[i].getPasosTotales()
+						+ " Ultima tirada: " + jugadores[i].getVelocidadUltimoTurno() + " Global: " + RecorridoGlobal);
+			}
 		}
 		
-		
-				
-			}
-		
-
-	
-=======
-	private void iniciaPartida() {
+		System.out.println("|| LA CARRERA A FINALIZADO ||");
 
 	}
->>>>>>> ecef5bfdf75ea0ab8baab4610063fa5c6847f55c
 
 	/**
 	 * Este metodo realiza una representacion grafica en consola de la pista y la
 	 * posicion de los jugadores en la misma
 	 */
-<<<<<<< HEAD
 	private static void pintaCarrera() {
-	
-		
-		
-	}
-=======
-	private void pintaCarrera() {
-
+		System.out.println("-----------------|| PISTA DE CARRERA ||-----------------");
+		for (int i = 0; i < 3; i++) {
+			System.out.println(jugadores[i].getVelocidadUltimoTurno());
+		}
 	}
 
->>>>>>> ecef5bfdf75ea0ab8baab4610063fa5c6847f55c
 	/**
 	 * Este metodo llama al metodo avanza para cada uno de los participantes de la
 	 * carrea para ejecutar un turno de la carrera
+	 * @param  
 	 */
-<<<<<<< HEAD
-	private static void ejecutaTurno() {
-		for (int i=0;i<6;i++)
+	private static void ejecutaTurno(int i) {
 			jugadores[i].avanza();
 	}
 
@@ -239,30 +151,7 @@ public class ProgramaCarrera {
 	 * participantes Velocidad Punta Máxima y Jugador que la alcanzó Velocidad
 	 * Media más alta y jugador que la alcanzo
 	 */
-	private static void imprimeEstadisticaCarrera() {
-		Date objDate = new Date(); // Sistema actual La fecha y la hora se asignan a objDate 
-		 
-        System.out.println(objDate); 
-        String strDateFormat = "hh: mm: ss a dd/MMM/YYYY"; // El formato de fecha est� especificado  
-        SimpleDateFormat objSDF = new SimpleDateFormat(strDateFormat); // La cadena de formato de fecha se pasa como un argumento al objeto 
-          System.out.println("La carrera se celebra en "+objSDF.format(objDate));
-		
-		
-		
-	
-=======
-	private void ejecutaTurno() {
-
-	}
-
-	/**
-	 * Este mÃ©todo debe imprimir la estadÃ­stica de la carrera Fecha y Hora de la
-	 * realizaciÃ³n DuraciÃ³n en minutos NÃºmero de participantes Ranking de
-	 * participantes Velocidad Punta MÃ¡xima y Jugador que la alcanzÃ³ Velocidad
-	 * Media mÃ¡s alta y jugador que la alcanzo
-	 */
 	private void imprimeEstadisticaCarrera() {
->>>>>>> ecef5bfdf75ea0ab8baab4610063fa5c6847f55c
 
 	}
 
@@ -273,6 +162,9 @@ public class ProgramaCarrera {
 	 * @return
 	 */
 	private IJugador masVeloz() {
+		for (int i = 0; i < 6; i++) {
+			jugadores[i].getVelocidadAlcanzadaMaxima();
+		}
 		return null;
 	}
 
@@ -287,11 +179,7 @@ public class ProgramaCarrera {
 	}
 
 	/**
-<<<<<<< HEAD
 	 * Método que devuelve un array de Jugadores con los jugadores de la partida
-=======
-	 * MÃ©todo que devuelve un array de Jugadores con los jugadores de la partida
->>>>>>> ecef5bfdf75ea0ab8baab4610063fa5c6847f55c
 	 * ordenados por puesto de carrera. En caso de que dos jugadores lleguen a meta
 	 * en el mismo turno, o sin llegar a meta empaten en el numero de pasos
 	 * recorridos, gana aquel que su velocidad en el ultimo turno fuera mas alta
@@ -301,5 +189,4 @@ public class ProgramaCarrera {
 	private IJugador[] ordenaRanking() {
 		return null;
 	}
-
 }

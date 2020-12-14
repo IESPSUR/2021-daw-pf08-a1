@@ -10,7 +10,7 @@ import java.util.Random;
  */
 public class CorreCaminos extends JugadorBasico {
 
-	protected static int dadoCorreCaminos, VelocidadMaximaCorreCaminos = 0, PasosCorreCaminos, resultadoDado, RecorridoCorreCaminos = 0;
+	protected static int dadoCorreCaminos, VelocidadMaximaCorreCaminos = 0, PasosCorreCaminos = 0, resultadoDado, RecorridoCorreCaminos = 0;
 
 	/**
 	 * Constructor de la clase CorreCaminos.
@@ -61,7 +61,7 @@ public class CorreCaminos extends JugadorBasico {
 
 	@Override
 	public int getVelocidadUltimoTurno() {
-		return PasosCorreCaminos;
+		return PasosCorrecaminos();
 	}
 
 	@Override
@@ -91,8 +91,4 @@ public class CorreCaminos extends JugadorBasico {
 		return RecorridoCorreCaminos;
 	}
 
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> ecef5bfdf75ea0ab8baab4610063fa5c6847f55c
