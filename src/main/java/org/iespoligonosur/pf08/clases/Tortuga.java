@@ -80,4 +80,9 @@ public class Tortuga extends JugadorBasico {
 		RecorridoTortuga = RecorridoTortuga + PasosTortuga();
 	}
 
+	@Override
+	public int getPasosTotales() {
+		return RecorridoTortuga;
+	}
+
 }

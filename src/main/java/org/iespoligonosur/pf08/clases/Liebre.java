@@ -98,4 +98,9 @@ public class Liebre extends JugadorBasico {
 		RecorridoLiebre = RecorridoLiebre + PasosLiebre();
 	}
 
+	@Override
+	public int getPasosTotales() {
+		return RecorridoLiebre;
+	}
+
 }

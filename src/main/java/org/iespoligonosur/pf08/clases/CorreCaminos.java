@@ -86,4 +86,9 @@ public class CorreCaminos extends JugadorBasico {
 		RecorridoCorreCaminos = RecorridoCorreCaminos + PasosCorrecaminos();
 	}
 
+	@Override
+	public int getPasosTotales() {
+		return RecorridoCorreCaminos;
+	}
+
 }
