@@ -15,9 +15,10 @@ public class ProgramaCarrera {
 	// Array con los jugadores
 	private static IJugador[] jugadores = new IJugador[2];
 	private static int longitudPistaCarreras = 100;
-	private int turno;
+	private static int turno;
 	private static LocalDateTime inicioPartida;
 	private static LocalDateTime finalPartida;
+	private static int UltimaTirada;
 
 	public ProgramaCarrera() {
 		// TODO Auto-generated constructor stub
@@ -105,23 +106,29 @@ public class ProgramaCarrera {
 	private static void iniciaPartida() {
 		inicioPartida = LocalDateTime.now();
 		int RecorridoGlobal = 0;
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
-		String formatDateTime = inicioPartida.format(formatter);
+		
+		DateTimeFormatter formatterInicio = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+		String formatDateTimeInicio = inicioPartida.format(formatterInicio);
 
-		System.out.println("|| LA CARRERA A COMENZADO || " + formatDateTime + " ||");
-
+		System.out.println("|| LA CARRERA A COMENZADO || " + formatDateTimeInicio + " ||");
+		System.out.println("---------------|| PISTA DE CARRERA ||---------------");
+		
 		while (RecorridoGlobal < longitudPistaCarreras) {
 			for (int i = 0; i < 2; i++) {
 				ejecutaTurno(i);
 				if (jugadores[i].getPasosTotales() > RecorridoGlobal) {
 					RecorridoGlobal = jugadores[i].getPasosTotales();
 				}
-				System.out.println(jugadores[i].getNombre() + " - " + jugadores[i].getPasosTotales()
-						+ " Ultima tirada: " + jugadores[i].getVelocidadUltimoTurno() + " Global: " + RecorridoGlobal);
+				/*System.out.println(jugadores[i].getNombre() + " - " + jugadores[i].getPasosTotales()
+						+ " Ultima tirada: " + jugadores[i].getVelocidadUltimoTurno() + " Global: " + RecorridoGlobal);*/
+				//System.out.print(jugadores[i].getNombre());
+				pintaCarrera(i, jugadores[i].getPasosTotales());
 			}
+			++turno;
 		}
+		System.out.println(turno);
 		
-		System.out.println("|| LA CARRERA A FINALIZADO ||");
+		imprimeEstadisticaCarrera();
 
 	}
 
@@ -129,11 +136,18 @@ public class ProgramaCarrera {
 	 * Este metodo realiza una representacion grafica en consola de la pista y la
 	 * posicion de los jugadores en la misma
 	 */
-	private static void pintaCarrera() {
-		System.out.println("-----------------|| PISTA DE CARRERA ||-----------------");
-		for (int i = 0; i < 3; i++) {
-			System.out.println(jugadores[i].getVelocidadUltimoTurno());
+	private static void pintaCarrera(int i, int UltimaTirada) {
+		// Hacemos que los turnos se realicen en intervalos de 2 segundos.
+       /* try {
+            Thread.sleep(2000);
+         } catch (Exception e) {
+            System.out.println(e);
+         }*/
+        System.out.print(jugadores[i].getNombre());
+		for (int j = 0; j < UltimaTirada; j++) {
+		System.out.print("-");
 		}
+		System.out.println("");
 	}
 
 	/**
@@ -142,17 +156,31 @@ public class ProgramaCarrera {
 	 * @param  
 	 */
 	private static void ejecutaTurno(int i) {
-			jugadores[i].avanza();
+		jugadores[i].avanza();
 	}
 
 	/**
-	 * Este mÃ©todo debe imprimir la estadÃ­stica de la carrera Fecha y Hora de la
-	 * realizaciÃ³n DuraciÃ³n en minutos NÃºmero de participantes Ranking de
-	 * participantes Velocidad Punta MÃ¡xima y Jugador que la alcanzÃ³ Velocidad
-	 * Media mÃ¡s alta y jugador que la alcanzo
+	 * Este método debe imprimir la estadística de la carrera Fecha y Hora de la
+	 * realización Duración en minutos Número de participantes Ranking de
+	 * participantes Velocidad Punta Máxima y Jugador que la alcanzó Velocidad
+	 * Media más alta y jugador que la alcanzo
 	 */
-	private void imprimeEstadisticaCarrera() {
-
+	private static void imprimeEstadisticaCarrera() {
+		
+		finalPartida = LocalDateTime.now();
+		DateTimeFormatter formatterFinal = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+		String formatDateFinalPartida = finalPartida.format(formatterFinal);
+		
+		System.out.println("|| LA CARRERA A FINALIZADO || " + formatDateFinalPartida + " ||");
+		System.out.println("---------------|| ESTADISTICAS ||---------------");
+		System.out.println("Duración: ");
+		System.out.println("Participantes: 6");
+		//ordenaRanking();
+		System.out.println("---------------|| RANKING ||---------------");
+		/*for (int i = 0; i < 2; i++) {
+			System.out.println(i + ". " + jugadores[i].getNombre());;
+		}*/
+		
 	}
 
 	/**
@@ -162,9 +190,6 @@ public class ProgramaCarrera {
 	 * @return
 	 */
 	private IJugador masVeloz() {
-		for (int i = 0; i < 6; i++) {
-			jugadores[i].getVelocidadAlcanzadaMaxima();
-		}
 		return null;
 	}
 
