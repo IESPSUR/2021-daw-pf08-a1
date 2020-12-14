@@ -28,6 +28,13 @@ public interface IJugador {
 	public int getVelocidadAlcanzadaMaxima();
 	
 	/**
+	 * Almacena la cantidad de pasos que ha alcanzado el jugador durante todo
+	 * el juego
+	 * @return pasos totales del jugador
+	 */
+	public int getPasosTotales();
+	
+	/**
 	 * Resetea todos los valores internos del objeto para
 	 * ponerse en disposicion de empezar una nueva partida
 	 */
