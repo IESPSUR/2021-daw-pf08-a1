@@ -91,4 +91,8 @@ public class CorreCaminos extends JugadorBasico {
 		return RecorridoCorreCaminos;
 	}
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> ecef5bfdf75ea0ab8baab4610063fa5c6847f55c
