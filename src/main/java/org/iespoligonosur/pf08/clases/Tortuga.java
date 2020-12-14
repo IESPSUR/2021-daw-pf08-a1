@@ -10,7 +10,7 @@ import java.util.Random;
  */
 public class Tortuga extends JugadorBasico {
 
-	static int dadoTortuga, PasosTortuga, resultadoDado, RecorridoTortuga = 0, VelocidadMaximaTortuga = 0;
+	static int dadoTortuga, PasosTortuga = 0, resultadoDado, RecorridoTortuga = 0, VelocidadMaximaTortuga = 0;
 
 	/**
 	 * Constructor de la clase Tortuga.
