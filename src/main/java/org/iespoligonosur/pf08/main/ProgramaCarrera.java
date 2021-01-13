@@ -1,9 +1,10 @@
 package org.iespoligonosur.pf08.main;
 
 import java.time.LocalDateTime;
-import java.util.Arrays;
+import java.time.format.DateTimeFormatter;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import static java.time.temporal.ChronoUnit.MILLIS;
 
 import org.iespoligonosur.pf08.clases.CorreCaminos;
 import org.iespoligonosur.pf08.clases.IJugador;
@@ -13,11 +14,12 @@ import org.iespoligonosur.pf08.clases.Tortuga;
 public class ProgramaCarrera {
 
 	// Array con los jugadores
-	private static IJugador[] jugadores = new IJugador[6];
-	private int longitudPistaCarreras = 100;
-	private int turno;
-	private LocalDateTime inicioPartida;
-	private LocalDateTime finalPartida;
+	private static IJugador[] jugadores = new IJugador[2];
+	private static int longitudPistaCarreras = 100;
+	private static int turno;
+	private static LocalDateTime inicioPartida;
+	private static LocalDateTime finalPartida;
+	private static int UltimaTirada;
 
 	public ProgramaCarrera() {
 		// TODO Auto-generated constructor stub
@@ -32,8 +34,16 @@ public class ProgramaCarrera {
 	 */
 	public static void main(String[] args) {
 		creaJugadores();
-		System.out.println(Arrays.toString(jugadores));
-		// Para ver que los jugadores se han creado, no aparece completo porque no esta creado el to string
+		iniciaPartida();
+		// System.out.println(Arrays.toString(jugadores));
+		// Para ver que los jugadores se han creado, no aparece completo porque no esta
+		// creado el to string
+
+		// Ejecutamos un turno.
+		// ejecutaTurno();
+
+		// Pintamos la carrera.
+		// pintaCarrera();
 	}
 
 	/**
@@ -44,8 +54,8 @@ public class ProgramaCarrera {
 		int opcionElegida;
 		try {
 			Scanner teclado = new Scanner(System.in);
-			
-			for (int i = 0; i < 6; i++) {
+
+			for (int i = 0; i < jugadores.length; i++) {
 				System.out.println("\nSeleccione el tipo de jugador a crear: ");
 				System.out.println("1. Tortuga");
 				System.out.println("2. Liebre");
@@ -56,7 +66,7 @@ public class ProgramaCarrera {
 				switch (opcionElegida) {
 				case 1: {
 					System.out.println("¿Qué nombre le quieres poner a la Tortuga?");
-					
+
 					String nombre = teclado.nextLine();
 					Tortuga t = new Tortuga(nombre);
 					jugadores[i] = t;
@@ -94,7 +104,37 @@ public class ProgramaCarrera {
 	 * usuario La partida termina cuando cualquiera de los jugadores recorre toda la
 	 * longitud determinada para la pista alcanzando la meta.
 	 */
-	private void iniciaPartida() {
+	private static void iniciaPartida() {
+		inicioPartida = LocalDateTime.now();
+		int mayorRecorridoActual = 0;
+
+		DateTimeFormatter formatterInicio = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+		String formatDateTimeInicio = inicioPartida.format(formatterInicio);
+
+		System.out.println("|| LA CARRERA HA COMENZADO || " + formatDateTimeInicio + " ||");
+		System.out.println("---------------|| PISTA DE CARRERA ||---------------");
+
+		while (mayorRecorridoActual < longitudPistaCarreras) {
+			for (int i = 0; i < jugadores.length; i++) {
+				ejecutaTurno(i);
+				int pasosTotalesJugador = jugadores[i].getPasosTotales();
+				if (pasosTotalesJugador > mayorRecorridoActual) {
+					mayorRecorridoActual = pasosTotalesJugador;
+				}
+				/*
+				 * System.out.println(jugadores[i].getNombre() + " - " +
+				 * jugadores[i].getPasosTotales() + " Ultima tirada: " +
+				 * jugadores[i].getVelocidadUltimoTurno() + " Global: " + RecorridoGlobal);
+				 */
+				// System.out.print(jugadores[i].getNombre());
+				pintaCarrera(i, pasosTotalesJugador);
+			}
+			System.out.println("");
+			turno++;
+		}
+		System.out.println("La carrera ha durado " + turno + " turnos \n");
+
+		imprimeEstadisticaCarrera();
 
 	}
 
@@ -102,25 +142,50 @@ public class ProgramaCarrera {
 	 * Este metodo realiza una representacion grafica en consola de la pista y la
 	 * posicion de los jugadores en la misma
 	 */
-	private void pintaCarrera() {
-
+	private static void pintaCarrera(int i, int UltimaTirada) {
+		// Hacemos que los turnos se realicen en intervalos de 2 segundos.
+		/*
+		 * try { Thread.sleep(2000); } catch (Exception e) { System.out.println(e); }
+		 */
+		System.out.print(jugadores[i].getNombre());
+		for (int j = 0; j < UltimaTirada; j++) {
+			System.out.print("-");
+		}
+		System.out.println("");
 	}
 
 	/**
 	 * Este metodo llama al metodo avanza para cada uno de los participantes de la
 	 * carrea para ejecutar un turno de la carrera
+	 * 
+	 * @param
 	 */
-	private void ejecutaTurno() {
-
+	private static void ejecutaTurno(int i) {
+		jugadores[i].avanza();
 	}
 
 	/**
-	 * Este mÃ©todo debe imprimir la estadÃ­stica de la carrera Fecha y Hora de la
-	 * realizaciÃ³n DuraciÃ³n en minutos NÃºmero de participantes Ranking de
-	 * participantes Velocidad Punta MÃ¡xima y Jugador que la alcanzÃ³ Velocidad
-	 * Media mÃ¡s alta y jugador que la alcanzo
+	 * Este método debe imprimir la estadística de la carrera Fecha y Hora de la
+	 * realización Duración en minutos Número de participantes Ranking de
+	 * participantes Velocidad Punta Máxima y Jugador que la alcanzó Velocidad Media
+	 * más alta y jugador que la alcanzo
 	 */
-	private void imprimeEstadisticaCarrera() {
+	private static void imprimeEstadisticaCarrera() {
+
+		finalPartida = LocalDateTime.now();
+		DateTimeFormatter formatterFinal = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+		String formatDateFinalPartida = finalPartida.format(formatterFinal);
+
+		System.out.println("|| LA CARRERA A FINALIZADO || " + formatDateFinalPartida + " ||");
+		System.out.println("---------------|| ESTADISTICAS ||---------------");
+		System.out.println("Duración en Milisegundos: " + MILLIS.between(inicioPartida, finalPartida));
+		System.out.println("Participantes: " + jugadores.length);
+		// ordenaRanking();
+		System.out.println("---------------|| RANKING ||---------------");
+		/*
+		 * for (int i = 0; i < 2; i++) { System.out.println(i + ". " +
+		 * jugadores[i].getNombre());; }
+		 */
 
 	}
 
