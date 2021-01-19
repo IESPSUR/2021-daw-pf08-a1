@@ -20,10 +20,10 @@ public class CorreCaminos extends JugadorBasico {
 	}
 
 	/**
-	 * MÃ©todo para lanzar un dado.
+	 * Método para lanzar un dado.
 	 * 
-	 * @param numeroCaras nÃºmero de caras que tiene el dado.
-	 * @return devuelve el nÃºmero resultado de lanzar el dado.
+	 * @param numeroCaras número de caras que tiene el dado.
+	 * @return devuelve el número resultado de lanzar el dado.
 	 */
 	public static int DadoBase(int numeroCaras) {
 		Random ran = new Random();
@@ -33,10 +33,10 @@ public class CorreCaminos extends JugadorBasico {
 	}
 
 	/**
-	 * MÃ©todo para calcular el nÃºmero de pasos que da el CorreCaminos en un turno,
-	 * solo avanza si es nÃºmero par, en caso contrario avanzarÃ¡ 0 pasos.
+	 * Método para calcular el número de pasos que da el CorreCaminos en un turno,
+	 * solo avanza si es número par, en caso contrario avanzará 0 pasos.
 	 * 
-	 * @return devuelve el nÃºmero de pasos que avanza el CorreCaminos en un turno.
+	 * @return devuelve el número de pasos que avanza el CorreCaminos en un turno.
 	 */
 	public static int PasosCorrecaminos() {
 

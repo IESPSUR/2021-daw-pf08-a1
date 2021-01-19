@@ -20,10 +20,10 @@ public class Tortuga extends JugadorBasico {
 	}
 
 	/**
-	 * MÃ©todo para lanzar un dado.
+	 * Método para lanzar un dado.
 	 * 
-	 * @param numeroCaras nÃºmero de caras que tiene el dado.
-	 * @return devuelve el nÃºmero resultado de lanzar el dado.
+	 * @param numeroCaras número de caras que tiene el dado.
+	 * @return devuelve el número resultado de lanzar el dado.
 	 */
 	public static int DadoBase(int numeroCaras) {
 		Random ran = new Random();
@@ -33,9 +33,9 @@ public class Tortuga extends JugadorBasico {
 	}
 
 	/**
-	 * MÃ©todo para calcular el nÃºmero de pasos que da la tortuga en un turno.
+	 * Método para calcular el número de pasos que da la tortuga en un turno.
 	 * 
-	 * @return devuelve el nÃºmero de pasos que avanza la tortuga en un turno.
+	 * @return devuelve el número de pasos que avanza la tortuga en un turno.
 	 */
 	public static int PasosTortuga() {
 		PasosTortuga = DadoBase(3);
