@@ -13,12 +13,14 @@ public class Liebre extends JugadorBasico {
 
 	static int dadoLiebre, PasosLiebre, VelocidadMaximaLiebre = 0, resultadoDado, RecorridoLiebre = 0;
 	static Scanner teclado;
+	static String name;
 
 	/**
 	 * Constructor de la clase Liebre.
 	 */
 	public Liebre(String nombre) {
 		this.nombre = nombre;
+		name = nombre;
 	}
 
 	/**
@@ -47,7 +49,7 @@ public class Liebre extends JugadorBasico {
 		if (dadoLiebre == 3) {
 			PasosLiebre = 3;
 		} else {
-			System.out.println("Adivina si el número es mayor o menor a 3 (Mayor/Menor)");
+			System.out.println(name + " adivina si el número es mayor o menor a 3 (Mayor/Menor)");
 			String resultado = teclado.next();
 			if (resultado.equals("Mayor") && dadoLiebre > 3) {
 				PasosLiebre = dadoLiebre;

@@ -23,7 +23,7 @@ public class ProgramaCarrera {
 	private static IJugador[] MediaVeloz = new IJugador[6];
 	private static IJugador[] MasVeloz = new IJugador[6];
 	private static int[] RankingJugadores = new int[6];
-	static Scanner teclado;
+	private static Scanner teclado;
 
 	public ProgramaCarrera() {
 		// TODO Auto-generated constructor stub
@@ -179,6 +179,7 @@ public class ProgramaCarrera {
 		masVeloz();
 		System.out.println("Velocidad Punta Máxima: " + MasVeloz[0].getVelocidadAlcanzadaMaxima() + " Jugador: "
 				+ MasVeloz[0].getNombre());
+		mayorMedia();
 		System.out.println("Velocidad Media más alta: " + MediaVeloz[0].getNombre());
 
 		System.out.println("---------------|| RANKING ||---------------");
