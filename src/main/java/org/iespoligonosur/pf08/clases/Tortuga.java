@@ -2,15 +2,9 @@ package org.iespoligonosur.pf08.clases;
 
 import java.util.Random;
 
-/**
- * Clase para definir el tipo de jugador Tortuga.
- * 
- * @author Grupo A1.
- *
- */
 public class Tortuga extends JugadorBasico {
-//Dado base presentar en clase jugador basico
-	static int dadoTortuga, PasosTortuga, resultadoDado, RecorridoTortuga = 0, VelocidadMaximaTortuga = 0;
+
+	static int dadoTortuga, PasosTortuga = 0, resultadoDado, RecorridoTortuga = 0, VelocidadMaximaTortuga = 0;
 
 	/**
 	 * Constructor de la clase Tortuga.
@@ -20,10 +14,10 @@ public class Tortuga extends JugadorBasico {
 	}
 
 	/**
-	 * MÃ©todo para lanzar un dado.
+	 * Método para lanzar un dado.
 	 * 
-	 * @param numeroCaras nÃºmero de caras que tiene el dado.
-	 * @return devuelve el nÃºmero resultado de lanzar el dado.
+	 * @param numeroCaras número de caras que tiene el dado.
+	 * @return devuelve el número resultado de lanzar el dado.
 	 */
 	public static int DadoBase(int numeroCaras) {
 		Random ran = new Random();
@@ -33,9 +27,9 @@ public class Tortuga extends JugadorBasico {
 	}
 
 	/**
-	 * MÃ©todo para calcular el nÃºmero de pasos que da la tortuga en un turno.
+	 * Método para calcular el número de pasos que da la tortuga en un turno.
 	 * 
-	 * @return devuelve el nÃºmero de pasos que avanza la tortuga en un turno.
+	 * @return devuelve el número de pasos que avanza la tortuga en un turno.
 	 */
 	public static int PasosTortuga() {
 		PasosTortuga = DadoBase(3);
@@ -55,27 +49,7 @@ public class Tortuga extends JugadorBasico {
 
 	@Override
 	public int getVelocidadUltimoTurno() {
-
-		/**
-		 * En caso de que ultimo turno se refiera a el ultimo turno del juego, creamos
-		 * un array con todos los turnos y cogeremos el Ãºltimo.
-		 * 
-		 * int [] TurnosTortuga; int UltimoTurnoTortuga;
-		 * 
-		 * TurnosTortuga = PasosTortuga;
-		 * 
-		 * UltimoTurnoTortuga = TurnosTortuga.get(TurnosTortuga.size() -1 );
-		 * 
-		 * return UltimoTurnoTortuga;
-		 **/
-
-		/**
-		 * En caso de que ultimo turno se refiera a el ultimo turno tirado.
-		 * 
-		 * return PasosTortuga;
-		 **/
-
-		return 0;
+		return PasosTortuga;
 	}
 
 	@Override
@@ -100,4 +74,10 @@ public class Tortuga extends JugadorBasico {
 		RecorridoTortuga = RecorridoTortuga + PasosTortuga();
 	}
 
+	@Override
+	public int getPasosTotales() {
+		return RecorridoTortuga;
+	}
+
 }
+

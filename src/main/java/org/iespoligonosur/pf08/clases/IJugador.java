@@ -38,4 +38,6 @@ public interface IJugador {
 	 * El avance modifica el estado interno del objeto
 	 */
 	public void avanza();
+
+	int getPasosTotales();
 }

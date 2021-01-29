@@ -10,7 +10,7 @@ import java.util.Random;
  */
 public class CorreCaminos extends JugadorBasico {
 
-	protected static int dadoCorreCaminos, VelocidadMaximaCorreCaminos = 0, PasosCorreCaminos, resultadoDado;
+	protected static int dadoCorreCaminos, VelocidadMaximaCorreCaminos = 0, PasosCorreCaminos = 0, resultadoDado, RecorridoCorreCaminos = 0;
 
 	/**
 	 * Constructor de la clase CorreCaminos.
@@ -20,10 +20,10 @@ public class CorreCaminos extends JugadorBasico {
 	}
 
 	/**
-	 * MÃ©todo para lanzar un dado.
+	 * Método para lanzar un dado.
 	 * 
-	 * @param numeroCaras nÃºmero de caras que tiene el dado.
-	 * @return devuelve el nÃºmero resultado de lanzar el dado.
+	 * @param numeroCaras número de caras que tiene el dado.
+	 * @return devuelve el número resultado de lanzar el dado.
 	 */
 	public static int DadoBase(int numeroCaras) {
 		Random ran = new Random();
@@ -33,10 +33,10 @@ public class CorreCaminos extends JugadorBasico {
 	}
 
 	/**
-	 * MÃ©todo para calcular el nÃºmero de pasos que da el CorreCaminos en un turno,
-	 * solo avanza si es nÃºmero par, en caso contrario avanzarÃ¡ 0 pasos.
+	 * Método para calcular el número de pasos que da el CorreCaminos en un turno,
+	 * solo avanza si es número par, en caso contrario avanzará 0 pasos.
 	 * 
-	 * @return devuelve el nÃºmero de pasos que avanza el CorreCaminos en un turno.
+	 * @return devuelve el número de pasos que avanza el CorreCaminos en un turno.
 	 */
 	public static int PasosCorrecaminos() {
 
@@ -51,8 +51,7 @@ public class CorreCaminos extends JugadorBasico {
 
 	@Override
 	public String getNombre() {
-		// TODO Auto-generated method stub
-		return null;
+		return nombre;
 	}
 
 	@Override
@@ -62,8 +61,7 @@ public class CorreCaminos extends JugadorBasico {
 
 	@Override
 	public int getVelocidadUltimoTurno() {
-		// TODO Auto-generated method stub
-		return 0;
+		return PasosCorrecaminos();
 	}
 
 	@Override
@@ -78,13 +76,19 @@ public class CorreCaminos extends JugadorBasico {
 
 	@Override
 	public void resetea() {
-		// TODO Auto-generated method stub
-		
+		RecorridoCorreCaminos = 0;
+		VelocidadMaximaCorreCaminos = 0;
+		PasosCorreCaminos = 0;			
 	}
 
 	@Override
 	public void avanza() {
-		PasosCorrecaminos();
+		RecorridoCorreCaminos = RecorridoCorreCaminos + PasosCorrecaminos();
+	}
+
+	@Override
+	public int getPasosTotales() {
+		return RecorridoCorreCaminos;
 	}
 
 }
